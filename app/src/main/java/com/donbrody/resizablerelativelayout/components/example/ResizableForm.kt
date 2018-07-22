@@ -3,11 +3,10 @@ package com.donbrody.resizablerelativelayout.components.example
 import android.content.Context
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
+import android.text.InputFilter
+import android.text.InputType
 import android.util.AttributeSet
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
+import android.widget.*
 import com.donbrody.resizablerelativelayout.R
 import com.donbrody.resizablerelativelayout.components.ResizableRelativeLayout
 
@@ -20,8 +19,8 @@ class ResizableForm(context: Context, attr: AttributeSet): ResizableRelativeLayo
         val wrapper = createComponentWrapper()
         wrapper.addView(createField("User Name"))
         wrapper.addView(createField("Email"))
-        wrapper.addView(createField("Password"))
-        wrapper.addView(createField("Confirm Password"))
+        wrapper.addView(createField("Password", true))
+        wrapper.addView(createField("Confirm Password", true))
         wrapper.addView(createButton("Sign Up"))
         addView(wrapper)
     }
@@ -38,7 +37,7 @@ class ResizableForm(context: Context, attr: AttributeSet): ResizableRelativeLayo
         return wrapper
     }
 
-    private fun createField(hint: String): EditText {
+    private fun createField(hint: String, passwordField: Boolean = false): EditText {
         val field = EditText(context)
         val lp = LinearLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT,
@@ -48,6 +47,11 @@ class ResizableForm(context: Context, attr: AttributeSet): ResizableRelativeLayo
         lp.bottomMargin = 15.toDp
         field.layoutParams = lp
         field.hint = hint
+        field.filters = Array<InputFilter>(1){ InputFilter.LengthFilter(25) }
+        if (passwordField) {
+            field.inputType = (InputType.TYPE_CLASS_TEXT or
+                    InputType.TYPE_TEXT_VARIATION_PASSWORD)
+        }
         return field
     }
 
@@ -62,6 +66,11 @@ class ResizableForm(context: Context, attr: AttributeSet): ResizableRelativeLayo
         button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
         button.setTextColor(Color.WHITE)
         button.text = text
+
+        button.setOnClickListener({
+            Toast.makeText(context, "Sign Up Clicked!", Toast.LENGTH_LONG).show()
+        })
+
         return button
     }
 }
