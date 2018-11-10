@@ -43,8 +43,8 @@ class ResizableForm(context: Context, attr: AttributeSet): ResizableRelativeLayo
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT
         )
-        lp.topMargin = 15.toDp
-        lp.bottomMargin = 15.toDp
+        lp.topMargin = 10.toDp
+        lp.bottomMargin = 10.toDp
         field.layoutParams = lp
         field.hint = hint
         field.filters = Array<InputFilter>(1){ InputFilter.LengthFilter(25) }
@@ -61,7 +61,7 @@ class ResizableForm(context: Context, attr: AttributeSet): ResizableRelativeLayo
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT
         )
-        lp.topMargin = 80.toDp
+        lp.topMargin = 50.toDp
         button.layoutParams = lp
         button.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
         button.setTextColor(Color.WHITE)
