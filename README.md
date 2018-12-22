@@ -9,7 +9,7 @@ Just download the project, open it in Android Studio, connect to a virtual or ph
 
 The demo is one activity (MainActivity.java). Below are screen shots of the activity in both portrait and landscape. Notice that in both orientations the demo form is 80% of the screen width. Clicking the submit button pops some toast to give you some feedback. The fields aren't connected to anything, nor do they check for a valid email or matching passwords. They're just there as an example of what you could use this component for.
 
-<img height="300px" width="400px" src="https://s3.amazonaws.com/don-brody-images/ResizableForm+Landscape.jpg"/>&nbsp;&nbsp;&nbsp;&nbsp;<img height="400px" width="300px" src="https://s3.amazonaws.com/don-brody-images/ResizableForm+Portrait.jpg"/>
+<img height="300px" width="400px" src="/ResizableForm Landscape.jpg?raw=true"/>&nbsp;&nbsp;&nbsp;&nbsp;<img height="400px" width="300px" src="/ResizableForm Portrait.jpg?raw=true"/>
 
 ## How It Works
 This is a very simple, 37 line component (including imports and comments). It's an abstract class that extends RelativeLayout, and hooks into the onSizeChanged callback. When size changes, it removes all child views and calls its one abstract method configureSelf. Child classes must re-render themselves when triggered by the configureSelf function call.
